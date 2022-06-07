@@ -14,13 +14,20 @@ const App = () => {
     console.log('USE EFFECT for FETCH ...');
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((res) => res.json())
-      .then((users) => setMonsters(users));
+      .then((users) => {
+        console.log('UPDATE SET MONSTERS HAPPENED!');
+        setMonsters(users);
+      });
   }, []);
 
   useEffect(() => {
+    console.log('USE EFFECT for Monster searchINPUT ...');
     const newFilteredData = monsters.filter((monster) =>
       monster.name.toLowerCase().includes(searchInput.toLowerCase())
     );
+    console.log('newFilteredData ', newFilteredData);
+
+    console.log(newFilteredData === filteredMonsters);
 
     setFilteredMonsters(newFilteredData);
   }, [monsters, searchInput]);

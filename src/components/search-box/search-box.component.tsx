@@ -1,6 +1,15 @@
 import './search-box.styles.css';
 
-const SearchBox = (props) => {
+import { ChangeEvent } from 'react';
+
+type SearchBoxProps = {
+  className: string;
+  placeholder?: string;
+  onSearchChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  type: string;
+};
+
+const SearchBox = (props: SearchBoxProps) => {
   const { onSearchChange, placeholder, className, type } = props;
   return (
     <input
